@@ -1,0 +1,36 @@
+---
+import GestureCard from './GestureCard.astro';
+---
+<section class="band" id="gestures">
+  <div class="wrap">
+    <div class="band__head" data-reveal>
+      <h2>Every gesture, at a glance</h2>
+      <p class="lead">The whole guide, the way the control panel shows it: a hand, and what it acts on.</p>
+    </div>
+    <div class="tabs tabs--wrap" role="group" aria-label="Kind of gesture" data-reveal>
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="windows" aria-pressed="false"><i class="mark mark--windows"></i>Windows</button>
+      <button type="button" data-filter="pointer" aria-pressed="false"><i class="mark mark--pointer"></i>Pointer and keys</button>
+      <button type="button" data-filter="system" aria-pressed="false"><i class="mark mark--system"></i>System</button>
+    </div>
+
+    <div class="gestures" data-reveal="children">
+      <GestureCard id="move" kind="windows" title="Move a window" pose="Thumb + index">Pinch over a window and carry it. A quick pinch brings it to the front.</GestureCard>
+      <GestureCard id="resize" kind="windows" title="Resize" pose="Second hand pinches too">While one hand holds a window, pinch with the other and pull them apart.</GestureCard>
+      <GestureCard id="flick" kind="windows" title="Maximize or minimize" pose="Flick a held window">Flick it up and let go to maximize it, down to minimize it.</GestureCard>
+      <GestureCard id="edge" kind="windows" title="Send to a workspace" pose="Hold at a screen edge">Carry a window to the left or right edge of the screen and wait there.</GestureCard>
+      <GestureCard id="click" kind="pointer" title="Click" pose="Point, thumb down">Point up, thumb out, then tap the thumb down onto your middle finger. Twice is a double click; keep it down to drag.</GestureCard>
+      <GestureCard id="menu" kind="system" title="Pie menu" pose="Thumb + pinky">Move toward an item and let go to pick it: apps, windows, music.</GestureCard>
+      <GestureCard id="close" kind="windows" title="Close a window" pose="Fist, held still">Hold a fist over the window until the ring completes.</GestureCard>
+      <GestureCard id="scroll" kind="pointer" title="Scroll" pose="Two fingers up">Tip the two fingers at the screen to scroll down, straighten them up to scroll up: the further, the faster.</GestureCard>
+      <GestureCard id="knob" kind="system" title="Volume and brightness" pose="Claw, turned">Grip a knob in the air and turn it. Right hand: volume. Left: brightness.</GestureCard>
+      <GestureCard id="swipe" kind="pointer" title="Enter" pose="Open palm, swept right">Sweep an open hand quickly to the right to press the Enter key.</GestureCard>
+      <GestureCard id="switcher" kind="windows" title="Window switcher" pose="Fist to chin">Every window becomes a card. Point at one and pinch to go to it.</GestureCard>
+      <GestureCard id="camera" kind="system" title="Camera" pose="Peace sign, both hands">Hold both up until the ring completes, about a second, and a photo is taken at once.</GestureCard>
+      <GestureCard id="dictate" kind="system" title="Dictate" pose="Thumb and pinky out">Hold up the letter Y and speak. Let go, and what you said is typed where the keyboard is.</GestureCard>
+      <GestureCard id="spell" kind="system" title="App launcher" pose="Thumb, index and pinky out">Hold up I love you, then fingerspell an app's name until it is the only one left, or a macro's letters.</GestureCard>
+      <GestureCard id="clap" kind="system" title="New tab" pose="Clap twice">With a web browser in front, clap your hands twice to open a new tab in it.</GestureCard>
+      <GestureCard id="toss" kind="system" title="Send to phone" pose="Open palm, tossed up">With a web browser in front, hold an open hand still, then flick it straight up: the page opens on your phone.</GestureCard>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+// The desktop on its own, playing on a loop, with a scrubber: for authoring scenes.
+import Base from '../../layouts/Base.astro';
+import Desk from '../../components/story/Desk.astro';
+import { SCENES } from '../../scripts/desk/scenes';
+---
+<Base title="HoloTouch · desk scenes" description="Scene authoring harness." noindex>
+  <main class="dev">
+    <div class="dev__desk">
+      <div class="desk-frame"><Desk /></div>
+    </div>
+    <div class="now">
+      <div class="now__hands" id="now-hands" aria-hidden="true"></div>
+      <div class="now__text">
+        <div class="now__title" id="now-title"></div>
+        <div class="now__pose" id="now-pose"></div>
+        <div class="now__how" id="now-how"></div>
+        <div class="now__time" id="now-time"></div>
+      </div>
+    </div>
+    <input class="dev__scrub" id="scrub" type="range" min="0" max="5000" step="10" value="0" aria-label="Moment in the scene">
+    <div class="now__controls">
+      <div class="tabs tabs--wrap" role="group" aria-label="Scene">
+        {SCENES.map((scene, i) => <button type="button" data-scene={scene.id} aria-pressed={i === 0 ? 'true' : 'false'}>{scene.title}</button>)}
+      </div>
+      <button type="button" class="btn btn--small" id="desk-toggle" aria-pressed="true"><span>Pause</span></button>
+    </div>
+  </main>
+  <script src="../../scripts/dev-desk.ts"></script>
+</Base>
+<style>
+  .dev { width: min(100% - 32px, 1000px); margin: 92px auto 24px; display: grid; gap: 16px; }
+  .dev__desk .desk-frame { width: 100%; }
+  .dev__scrub { width: 100%; }
+  .now { display: flex; align-items: center; gap: 20px; padding: 14px 18px; border: 1.5px solid var(--line); border-radius: 22px; background: var(--paper); }
+  .now__hands { flex: none; display: flex; gap: 2px; }
+  .now__hands .figure { width: 64px; height: 64px; transition: opacity 200ms; }
+  .now__hands .figure.is-away { opacity: 0.22; }
+  .now__title { font: 600 21px/1.2 var(--display); }
+  .now__pose { font-weight: 700; font-size: 14.5px; color: var(--ink-mid); }
+  .now__how, .now__time { font-size: 15px; color: var(--ink-mid); }
+  .now__time { font-family: var(--mono); }
+  .now__controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+</style>

@@ -1,0 +1,17 @@
+/* The ring cursor of the overlay. */
+.cur { position: absolute; left: 0; top: 0; display: block; width: 0; height: 0; --d: 56px; --dot: 0px; --tone: var(--coral); }
+.cur--l { --tone: var(--sky); }
+.cur--idle { --d: 44px; opacity: 0.7; }
+.cur__ring {
+    position: absolute; left: calc(var(--d) / -2); top: calc(var(--d) / -2); width: var(--d); height: var(--d);
+    display: grid; place-items: center; border: 5px solid var(--tone); border-radius: 50%;
+    box-shadow: var(--keyline), inset 0 0 0 2px var(--cream);
+}
+.cur.is-pinching .cur__ring { background: var(--cream); box-shadow: var(--keyline), 0 6px 14px rgba(30, 27, 46, 0.3); }
+.cur__dot { display: block; width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--tone); }
+.cur__tag {
+    position: absolute; top: calc(var(--d) / 2 - 14px); width: 22px; height: 22px; display: grid; place-items: center;
+    background: var(--tone); box-shadow: var(--keyline); color: var(--ink); font: 700 13px/1 var(--display);
+}
+.cur--r .cur__tag { left: calc(var(--d) / 2 - 12px); border-radius: 4px 50% 50% 50%; }
+.cur--l .cur__tag { right: calc(var(--d) / 2 - 12px); border-radius: 50% 4px 50% 50%; }

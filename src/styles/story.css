@@ -1,0 +1,80 @@
+/* ---------- the story: the hero and the gesture chapters share one pinned stage ---------- */
+.story { position: relative; height: 995svh; }  /* the chapters, plus the last screen the stage stays on */
+.story__stage {
+    position: sticky; top: 0; height: 100svh; padding-top: 68px;
+    display: flex; flex-direction: column; overflow: clip;
+}
+
+/* The hero copy sits at the top of the stage and leaves as the reader starts to scroll. */
+.story__hero {
+    position: relative; z-index: 2; flex: none; width: min(100% - 48px, 1128px); margin: 0 auto;
+    padding-top: clamp(14px, 3.5vh, 40px); text-align: center; will-change: transform, opacity, filter;
+}
+.story__hero h1 { margin-top: 16px; font-size: clamp(40px, 7.6vw, 80px); }
+.story__hero .lead { max-width: 620px; margin: 16px auto 0; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 24px; }
+/* Where the desktop sits at the top: the room left under the headline. */
+.story__slot { flex: 1; width: min(100% - 48px, 1000px); min-height: 120px; margin: 22px auto 48px; }
+
+/* The word the hand has hold of: a held window's frame, and the pinched cursor on it. */
+.held {
+    position: relative; display: inline-block; margin: 0 0.2em 0 0.06em; padding: 0 0.16em 0.04em;
+    border: 0.075em solid var(--coral); border-radius: 0.26em; box-shadow: var(--keyline);
+    background: var(--paper); rotate: -2.5deg; animation: carry 5s ease-in-out infinite;
+}
+.held .cur { left: calc(100% - 4px); top: calc(100% - 2px); --d: 48px; --dot: 26px; }
+@keyframes carry { 0%, 100% { translate: 0 0; } 50% { translate: 0.05em -0.07em; } }
+
+/* The story layout: narration on the left, the desktop on the right. It lies over the hero. */
+.story__grid {
+    position: absolute; inset: 68px 0 0 0; z-index: 1; display: grid;
+    grid-template-columns: minmax(260px, 30vw) minmax(0, 1fr); gap: 40px; align-items: center;
+    width: min(100%, 1440px); margin: 0 auto; padding: 24px 40px 40px; pointer-events: none;
+}
+.story__narration { position: relative; height: 100%; min-height: 0; }
+.narr {
+    position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px;
+    opacity: 0; will-change: transform, opacity, filter;
+}
+.narr h2 { font-size: clamp(32px, 3.6vw, 54px); line-height: 1.05; }
+.narr__pose { display: flex; align-items: center; gap: 10px; font: 700 15px/1.2 var(--body); color: var(--ink-mid); }
+.narr__n { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--cream); font: 600 14px/1 var(--display); }
+.narr__how { max-width: 36ch; font-size: clamp(16.5px, 1.4vw, 19px); line-height: 1.5; color: var(--ink-mid); text-wrap: pretty; }
+/* What each hand out in front of the camera is doing, under the narration. */
+.story__hands { position: absolute; left: 0; bottom: 0; display: flex; gap: 2px; }
+.story__hands .figure { width: 64px; height: 64px; transition: opacity 200ms; }
+.story__hands .figure.is-away { opacity: 0.22; }
+
+.story__desk { display: grid; place-items: center; min-width: 0; height: 100%; }
+.desk-frame {
+    width: min(100%, calc((100svh - 68px - 64px) * 880 / 560));
+    border: 2.5px solid var(--ink); border-radius: 28px; box-shadow: 0 6px 0 var(--ink); overflow: hidden; background: #3C4A5E;
+    transform-origin: 0 0; will-change: transform;
+}
+
+.story__hint {
+    position: absolute; left: 50%; bottom: 16px; z-index: 2; display: flex; align-items: center; gap: 6px;
+    translate: -50% 0; font: 600 14px/1 var(--display); color: var(--ink-soft); animation: nudge 2s ease-in-out infinite;
+}
+.story__hint .icon { width: 16px; height: 16px; }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+@media (max-width: 980px) {
+    .story__grid { grid-template-columns: minmax(220px, 32vw) minmax(0, 1fr); gap: 24px; padding: 20px 24px 36px; }
+    .narr h2 { font-size: clamp(28px, 4vw, 40px); }
+}
+@media (max-width: 760px) {
+    .story { height: 690svh; }
+    .story__hero { width: min(100% - 32px, 1128px); padding-top: 10px; }
+    .story__hero h1 { font-size: clamp(34px, 10vw, 44px); margin-top: 12px; }
+    .story__hero .lead { font-size: 16px; margin-top: 12px; }
+    .hero__actions { margin-top: 16px; gap: 10px; }
+    .story__slot { width: min(100% - 32px, 1000px); margin: 14px auto 18px; }
+    .story__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 34svh) minmax(0, 1fr); gap: 10px; padding: 10px 16px 24px; align-items: stretch; }
+    .narr { justify-content: flex-end; gap: 8px; }
+    .narr h2 { font-size: 30px; }
+    .narr__how { font-size: 15.5px; max-width: none; }
+    .story__hands { display: none; }
+    .desk-frame { width: 100%; border-radius: 18px; box-shadow: 0 4px 0 var(--ink); }
+    .story__hint { display: none; }
+}

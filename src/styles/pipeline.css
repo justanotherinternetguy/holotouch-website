@@ -1,0 +1,60 @@
+/* ---------- how it works: a camera frame and narration, on ink, pinned ---------- */
+.pipe { position: relative; height: 420svh; }
+.pipe__stage {
+    position: sticky; top: 0; height: 100svh; display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 34vw); gap: 48px; align-items: center;
+    width: min(100%, 1280px); margin: 0 auto; padding: 68px 40px 36px; overflow: clip;
+}
+.pipe__cam {
+    position: relative; width: min(100%, calc((100svh - 68px - 80px) * 4 / 3)); aspect-ratio: 4 / 3; margin: auto;
+    border: 2px solid rgba(251, 243, 228, 0.35); border-radius: 24px; overflow: hidden; background: var(--ink-raised);
+    will-change: transform, opacity;
+}
+.pipe__grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(251, 243, 228, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(251, 243, 228, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+.pipe__rec { position: absolute; left: 18px; top: 14px; display: flex; align-items: center; gap: 8px; font: 500 13px/1 var(--mono); color: #E3DACB; }
+.pipe__rec i { width: 10px; height: 10px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 2px var(--cream); }
+.pipe__hand, .pipe__measure { position: absolute; inset: 8% 18% 6% 18%; }
+.pipe__hand .figure { width: 100%; height: 100%; }
+.pipe__hand .hand__ink { stroke: var(--ledge); }
+.pipe__measure { overflow: visible; opacity: 0; pointer-events: none; }
+.pipe__measure line { stroke: var(--butter); stroke-width: 1.4; stroke-dasharray: 3 2; stroke-linecap: round; }
+.pipe__measure text { font: 500 5px var(--mono); fill: var(--butter); }
+/* The tracker's landmarks and bones, drawn on the hand. */
+.hand__bone { stroke: var(--cream); stroke-width: 1.2; stroke-linecap: round; opacity: 0; }
+.hand__lm { fill: var(--butter); stroke: var(--ink); stroke-width: 1; transform-box: fill-box; transform-origin: center; transform: scale(0); }
+
+.pipe__side { display: grid; grid-template-rows: minmax(240px, 2fr) auto auto; gap: 22px; align-content: center; height: 100%; min-height: 0; }
+.pipe__narration { position: relative; min-height: 0; }
+.narr--ink h2 { color: var(--cream); }
+.narr--ink .narr__pose, .narr--ink .narr__how { color: #E3DACB; }
+.narr--ink .narr__n { background: var(--cream); color: var(--ink); }
+.pipe__readout { min-height: 164px; padding: 14px 18px 16px; border-radius: 18px; background: var(--ledge); font: 400 14px/1.75 var(--mono); color: #C9C1B2; }
+.pipe__line { opacity: 0; }
+.pipe__line.is-on { opacity: 1; }
+.pipe__line b { font-weight: 500; color: var(--cream); }
+.pipe__verdict { display: inline-block; margin-top: 8px; padding: 4px 13px; border-radius: 999px; background: var(--coral); color: var(--ink); font: 600 15px/1.3 var(--display); opacity: 0; }
+.pipe__pane { position: relative; height: 112px; }
+.pipe__win { position: relative; width: 200px; display: flex; flex-direction: column; gap: 8px; padding-bottom: 14px; border-radius: 10px; background: #FFFFFF; box-shadow: 0 14px 32px rgba(12, 16, 24, 0.32); will-change: transform; }
+.pipe__win-bar { height: 20px; margin-bottom: 4px; border-radius: 10px 10px 0 0; background: #DFE2E8; }
+.pipe__win > i { height: 7px; margin: 0 14px; border-radius: 4px; background: #E3E6EC; }
+.pipe__frame { position: absolute; inset: -7px; border: 4px solid var(--coral); border-radius: 15px; box-shadow: var(--keyline); opacity: 0; }
+.pipe__pulse { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px; border: 4px solid var(--mint); border-radius: 50%; opacity: 0; }
+
+@media (max-width: 980px) {
+    .pipe__stage { grid-template-columns: minmax(0, 1fr) minmax(240px, 38vw); gap: 28px; padding: 68px 24px 32px; }
+    .pipe__readout { display: none; }
+    .pipe__side { grid-template-rows: minmax(240px, 1fr) auto; }
+}
+@media (max-width: 760px) {
+    .pipe { height: 320svh; }
+    .pipe__stage { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 44svh) minmax(0, 1fr); gap: 14px; padding: 78px 16px 24px; }
+    .pipe__cam { width: auto; height: 100%; max-width: 100%; }
+    .pipe__side { grid-template-rows: minmax(0, 1fr) auto; gap: 12px; }
+    .narr--ink h2 { font-size: 28px; }
+    .pipe__pane { height: 80px; }
+    .pipe__win { width: 150px; }
+}

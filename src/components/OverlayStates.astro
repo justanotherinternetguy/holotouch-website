@@ -1,0 +1,40 @@
+---
+import Cursor from './Cursor.astro';
+---
+<section class="band band--ink" id="overlay">
+  <div class="wrap">
+    <div class="band__head" data-reveal>
+      <h2>An overlay that reads on anything</h2>
+      <p class="lead">A see-through, click-through layer shows where your hands are and what each gesture is about to do. Every shape pairs cream with ink, so it reads over light and dark windows alike.</p>
+    </div>
+    <div class="states" data-reveal="children">
+      <div class="state">
+        <div class="tile" aria-hidden="true"><Cursor side="l" idle /></div>
+        <h3>Idle</h3>
+        <p>Small and pale once a hand has made no gesture for a while.</p>
+      </div>
+      <div class="state">
+        <div class="tile" aria-hidden="true"><Cursor side="r" /></div>
+        <h3>Ready</h3>
+        <p>An open ring. The desktop shows through it.</p>
+      </div>
+      <div class="state">
+        <div class="tile" aria-hidden="true"><Cursor side="l" pinching d={52} dot={14} /></div>
+        <h3>Pinching</h3>
+        <p>The ring tightens and a dot grows as the fingers close.</p>
+      </div>
+      <div class="state">
+        <div class="tile" aria-hidden="true"><Cursor side="r" pinching d={48} dot={26} /></div>
+        <h3>Pinched</h3>
+        <p>The dot is full: the hand has hold of something.</p>
+      </div>
+    </div>
+    <ul class="legend" data-reveal="children">
+      <li><i style="background: var(--sky)"></i><b>Sky</b> is your left hand.</li>
+      <li><i style="background: var(--coral)"></i><b>Coral</b> is your right hand.</li>
+      <li><i style="background: var(--butter)"></i><b>Butter</b> is progress: a hold filling up.</li>
+      <li><i style="background: var(--mint)"></i><b>Mint</b> is done, and running.</li>
+      <li><i style="background: var(--lilac)"></i><b>Lilac</b> opens further.</li>
+    </ul>
+  </div>
+</section>

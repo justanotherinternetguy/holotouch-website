@@ -1,0 +1,47 @@
+---
+// The hero and the gesture story share one pinned stage. At the top the desktop sits under the
+// headline; as the reader scrolls it grows into place beside the narration, and each gesture
+// plays as its chapter is scrolled through.
+import Desk from './Desk.astro';
+import Cursor from '../Cursor.astro';
+import { SCENES } from '../../scripts/desk/scenes';
+---
+<section class="story" id="story" data-story>
+  <div class="story__stage">
+    <div class="story__hero" data-hero>
+      <p class="chip">Hand-gesture window control for Linux</p>
+      <h1>Reach out and
+        <span class="held">grab<Cursor side="r" pinching /></span>
+        it</h1>
+      <p class="lead">HoloTouch lets you control the windows on your desktop with your hands in the air. A webcam watches them, and windows move, resize, close, scroll and switch.</p>
+      <div class="hero__actions">
+        <a class="btn btn--main" href="#gestures">See the gestures</a>
+        <a class="btn" href="#start">Get started</a>
+      </div>
+    </div>
+    <div class="story__slot" data-hero-slot></div>
+
+    <div class="story__grid">
+      <div class="story__narration">
+        {SCENES.map((scene, i) => (
+          <article class="narr" data-chapter={scene.id}>
+            <p class="narr__pose"><span class="narr__n">{i + 1}</span>{scene.pose}</p>
+            <h2>{scene.title}</h2>
+            <p class="narr__how">{scene.how}</p>
+          </article>
+        ))}
+        <div class="story__hands" data-hands aria-hidden="true"></div>
+      </div>
+      <div class="story__desk">
+        <div class="desk-frame" data-desk-frame>
+          <Desk />
+        </div>
+      </div>
+    </div>
+
+    <div class="story__hint" data-hint aria-hidden="true">
+      <span>Scroll</span>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 5 L12 19 M6 13 L12 19 L18 13"/></svg>
+    </div>
+  </div>
+</section>

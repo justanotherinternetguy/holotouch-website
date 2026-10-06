@@ -1,0 +1,56 @@
+---
+const check = 'M5 12.5 L9.5 17 L19 7.5';
+const guards = [
+    'A hand must be in view and relaxed for a moment before its gestures count.',
+    'A pinch that begins while the hand is moving fast is ignored.',
+    'A grab shorter than 300 ms is undone.',
+    'Only application windows can be changed, never the desktop or a panel.'
+];
+---
+<section class="band" id="facts">
+  <div class="wrap">
+    <ol class="steps" data-reveal="children">
+      <li class="card step">
+        <span class="step__n" style="background: var(--sky)">1</span>
+        <h3>Tracker</h3>
+        <div class="step__sub">Camera to landmarks</div>
+        <p>The webcam is read at 1280×720, 30 frames a second. MediaPipe finds up to two hands, 21 landmarks each, and a face mesh for the chin. It runs in a process of its own, so inference never stalls the overlay.</p>
+      </li>
+      <li class="card step">
+        <span class="step__n" style="background: var(--butter)">2</span>
+        <h3>Core</h3>
+        <div class="step__sub">Landmarks to gestures</div>
+        <p>Each hand keeps its identity when hands cross. A 1€ filter smooths a slow hand hard and a fast hand lightly. The engine starts the matching interaction, and one runs at a time.</p>
+      </li>
+      <li class="card step">
+        <span class="step__n" style="background: var(--lilac)">3</span>
+        <h3>Desktop</h3>
+        <div class="step__sub">Gestures to windows</div>
+        <p>xfwm4's windows are changed with standard EWMH requests. Clicks and keys go through XTEST, and scrolling through a virtual mouse for smooth wheel events.</p>
+      </li>
+      <li class="card step">
+        <span class="step__n" style="background: var(--coral)">4</span>
+        <h3>Overlay</h3>
+        <div class="step__sub">What you see</div>
+        <p>A fullscreen, transparent Qt Quick window sits above everything and draws the cursors, frames, menus and rings. Nothing samples or blurs the desktop.</p>
+      </li>
+    </ol>
+
+    <div class="facts">
+      <div class="guards" data-reveal>
+        <h3>Misread hands do no damage</h3>
+        <ul class="checks">
+          {guards.map((text) => (
+            <li><span class="check" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d={check}/></svg></span>{text}</li>
+          ))}
+        </ul>
+      </div>
+      <dl class="stats" data-reveal="children">
+        <div><dt>16</dt><dd>gestures</dd></div>
+        <div><dt>21</dt><dd>landmarks a hand</dd></div>
+        <div><dt>30</dt><dd>frames a second</dd></div>
+        <div><dt>352</dt><dd>tests</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>

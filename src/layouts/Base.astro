@@ -1,0 +1,40 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/hand.css';
+import '../styles/cursor.css';
+import '../styles/desk.css';
+import '../styles/overlay.css';
+import '../styles/story.css';
+import '../styles/pipeline.css';
+import '../styles/sections.css';
+import '../styles/motion.css';
+
+interface Props {
+    title: string;
+    description: string;
+    noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="theme-color" content="#FBF3E4">
+{noindex && <meta name="robots" content="noindex">}
+<link rel="icon" href="/holotouch.svg" type="image/svg+xml">
+<link rel="canonical" href={Astro.url.href}>
+<link rel="preload" href="/fonts/Fredoka.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Figtree.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+</head>
+<body id="top">
+<slot />
+</body>
+</html>

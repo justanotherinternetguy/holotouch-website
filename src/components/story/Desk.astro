@@ -1,0 +1,43 @@
+---
+// The stand-in desktop, 880 by 560 units, scaled to fit by the renderer. Its contents are kept
+// grey so the five accents only ever mean HoloTouch.
+const folder = 'M2 7a4 4 0 0 1 4-4h10l4 5h18a4 4 0 0 1 4 4v19a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z';
+const folders = ['contrib', 'docs', 'src', 'tests', 'research', 'website'];
+const lines = [58, 94, 88, 91, 52, 34, 90, 96, 70, 84, 44, 48, 92, 86, 90, 60, 30, 95, 88, 91, 76, 40, 89, 93, 64];
+const headings = new Set([0, 5, 11, 16, 22]);
+---
+<div class="desk" data-desk aria-hidden="true">
+  <div class="desk__inner">
+    <div class="desk__bar">
+      <span>Applications</span>
+      <span class="desk__pips"><i class="on"></i><i></i><i></i><i></i></span>
+      <span class="desk__name"><i></i>HoloTouch</span>
+    </div>
+
+    <div class="win win--files" data-window="files">
+      <div class="win__bar"><span>Files</span><span class="win__dots"><i></i><i></i><i></i></span></div>
+      <div class="win__files">
+        {folders.map((name) => <span><svg viewBox="0 0 44 38"><path d={folder}/></svg>{name}</span>)}
+      </div>
+    </div>
+
+    <div class="win win--browser" data-window="browser">
+      <div class="win__bar"><span>HoloTouch · Browser</span><span class="win__dots"><i></i><i></i><i></i></span></div>
+      <div class="win__url"><span>holotouch/docs/overview</span></div>
+      <div class="win__scroll">
+        <div class="win__page">
+          {lines.map((w, i) => <i class:list={{ 'win__heading': headings.has(i) }} style={`width: ${w}%`}></i>)}
+        </div>
+        <i class="win__thumb"></i>
+      </div>
+    </div>
+
+    <div class="win win--terminal" data-window="terminal">
+      <div class="win__bar"><span>Terminal</span><span class="win__dots"><i></i><i></i><i></i></span></div>
+      <div class="win__term">
+        <span>~ $ holotouch doctor</span>
+        <i style="width: 62%"></i><i style="width: 48%"></i><i style="width: 70%"></i><i style="width: 36%"></i>
+      </div>
+    </div>
+  </div>
+</div>

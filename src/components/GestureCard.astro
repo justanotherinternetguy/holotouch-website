@@ -1,0 +1,10 @@
+---
+interface Props { id: string; kind: 'windows' | 'pointer' | 'system'; title: string; pose: string; }
+const { id, kind, title, pose } = Astro.props;
+---
+<article class="gcard" data-kind={kind}>
+  <div data-gesture={id}></div>
+  <h3>{title}</h3>
+  <div class="gcard__pose"><i class={'mark mark--' + kind}></i>{pose}</div>
+  <p><slot /></p>
+</article>

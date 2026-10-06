@@ -1,0 +1,9 @@
+/* ---------- the hand ---------- */
+.hand { --tone: var(--coral); }
+.hand--left { --tone: var(--sky); }
+.hand--plain { --tone: var(--cream); }
+.hand__ink { fill: none; stroke: var(--ink); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
+.hand__palm-ink { fill: var(--ink); stroke: var(--ink); stroke-width: 5; }
+.hand__tone { fill: none; stroke: var(--tone); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.hand__palm { fill: var(--tone); }
+.hand__dot { fill: var(--cream); stroke: var(--ink); stroke-width: 2.5; }

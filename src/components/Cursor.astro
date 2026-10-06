@@ -1,0 +1,9 @@
+---
+// The ring cursor of the overlay, as static markup for the hero word and the overlay tiles.
+interface Props { side: 'l' | 'r'; pinching?: boolean; idle?: boolean; d?: number; dot?: number; }
+const { side, pinching = false, idle = false, d, dot } = Astro.props;
+const style = [d !== undefined ? `--d: ${d}px` : '', dot !== undefined ? `--dot: ${dot}px` : ''].filter(Boolean).join('; ') || undefined;
+---
+<span class:list={['cur', 'cur--' + side, { 'is-pinching': pinching, 'cur--idle': idle }]} style={style} aria-hidden="true">
+  <span class="cur__ring"><span class="cur__dot"></span></span><span class="cur__tag">{side === 'l' ? 'L' : 'R'}</span>
+</span>

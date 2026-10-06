@@ -1,0 +1,6 @@
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .held, .story__hint { animation: none; }
+    .narr, .story__hero, .desk-frame, [data-reveal], [data-reveal] > * { filter: none !important; }
+    * { transition-duration: 1ms !important; }
+}

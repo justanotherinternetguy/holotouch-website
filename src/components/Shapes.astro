@@ -1,0 +1,36 @@
+---
+const shapes: [string, string, string][] = [
+    ['open', 'Open', 'An open palm. Swept fast to the right, it presses Enter.'],
+    ['index', 'Index pinch', 'Thumb and index together: grabs the window under the hand.'],
+    ['pinky', 'Pinky pinch', 'Thumb and pinky together: opens the pie menu at the hand.'],
+    ['fist', 'Fist', 'Held still over a window, it closes it. Touched to the chin, it opens the window switcher.'],
+    ['two', 'Two fingers', 'Two fingers up: tip them at the screen to scroll.'],
+    ['claw', 'Claw', 'Turned like a knob: volume with the right hand, brightness with the left.'],
+    ['aim', 'Aim', 'Pointing, thumb held out: sights appear round the cursor.'],
+    ['press', 'Press', 'From aim, the thumb comes down onto the middle finger: a click.'],
+    ['y', 'Letter Y', 'The letter Y: hold it up and speak, and what you said is typed.'],
+    ['ily', 'I love you', 'The sign for I love you: opens the launcher, ready for fingerspelling.']
+];
+---
+<section class="band" id="shapes">
+  <div class="wrap shapes">
+    <div class="shapes__well" data-reveal>
+      <div class="shapes__hand" id="shape-hand" aria-hidden="true"></div>
+      <div class="tabs" role="group" aria-label="Which hand">
+        <button type="button" data-shape-side="left" aria-pressed="false">Left</button>
+        <button type="button" data-shape-side="right" aria-pressed="true">Right</button>
+      </div>
+    </div>
+    <div class="shapes__text" data-reveal>
+      <h2>Eleven hand shapes, read by rule</h2>
+      <p class="lead">From 21 landmarks a hand, HoloTouch measures how far the thumb is from each fingertip and how curled each finger is, in palm lengths. Hand-written rules turn that into a pose.</p>
+      <div class="shapes__list" role="group" aria-label="Hand shape">
+        {shapes.map(([id, label, note], i) => (
+          <button type="button" class="pill" data-shape={id} data-note={note} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>
+        ))}
+      </div>
+      <p class="shapes__note" id="shape-note" aria-live="polite">{shapes[0][2]}</p>
+      <p class="fine">The eleventh is a hand at rest, which does nothing. Each pose has separate thresholds for entering and leaving, and must hold for a moment before it counts, so a pose does not flicker.</p>
+    </div>
+  </div>
+</section>

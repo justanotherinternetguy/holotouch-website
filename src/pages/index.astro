@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Story from '../components/story/Story.astro';
+import Why from '../components/Why.astro';
+import Gestures from '../components/Gestures.astro';
+import Shapes from '../components/Shapes.astro';
+import Pipeline from '../components/Pipeline.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import OverlayStates from '../components/OverlayStates.astro';
+import GetStarted from '../components/GetStarted.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="HoloTouch · reach out and grab it"
+  description="HoloTouch lets you control the windows on a Linux desktop with your hands in the air. A webcam watches your hands, and windows move, resize, close, scroll and switch."
+>
+  <Nav />
+  <main>
+    <Story />
+    <Why />
+    <Gestures />
+    <Shapes />
+    <Pipeline />
+    <HowItWorks />
+    <OverlayStates />
+    <GetStarted />
+  </main>
+  <Footer />
+  <script src="../scripts/main.ts"></script>
+</Base>

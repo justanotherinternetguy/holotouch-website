@@ -1,0 +1,50 @@
+---
+// How it works, told as the reader scrolls: a hand comes into the camera's view, its landmarks are
+// found, rules read the pose, and the window answers.
+const steps = [
+    { n: '1', eyebrow: 'Tracker', title: 'A webcam watches', how: 'The webcam is read at 1280×720, 30 frames a second, in a process of its own, so inference never stalls the overlay.' },
+    { n: '2', eyebrow: 'Landmarks', title: '21 points a hand', how: 'MediaPipe finds up to two hands and 21 landmarks on each. Every hand keeps its identity when hands cross, and a 1€ filter smooths a slow hand hard and a fast hand lightly.' },
+    { n: '3', eyebrow: 'Core', title: 'Rules read the pose', how: 'How far the thumb is from each fingertip, and how curled each finger is, in palm lengths. Hand-written rules turn that into one of eleven poses, with separate thresholds for entering and leaving.' },
+    { n: '4', eyebrow: 'Desktop', title: 'The window answers', how: 'xfwm4’s windows are moved with standard EWMH requests, and a transparent Qt Quick overlay above everything draws what each gesture is about to do.' }
+];
+---
+<section class="pipe band--ink" id="how" data-pipe>
+  <div class="pipe__stage">
+    <div class="pipe__cam" data-cam aria-hidden="true">
+      <div class="pipe__grid"></div>
+      <span class="pipe__rec"><i></i>1280 × 720 · 30 fps</span>
+      <div class="pipe__hand" data-pipe-hand></div>
+      <svg class="pipe__measure" data-measure viewBox="0 0 96 96">
+        <line data-measure-line x1="0" y1="0" x2="0" y2="0" />
+        <text data-measure-text x="2" y="7">0.62 palm</text>
+      </svg>
+    </div>
+    <div class="pipe__side">
+      <div class="pipe__narration">
+        {steps.map((step) => (
+          <article class="narr narr--ink" data-step={step.n}>
+            <p class="narr__pose"><span class="narr__n">{step.n}</span>{step.eyebrow}</p>
+            <h2>{step.title}</h2>
+            <p class="narr__how">{step.how}</p>
+          </article>
+        ))}
+      </div>
+      <div class="pipe__readout" data-readout aria-hidden="true">
+        <div class="pipe__line is-on">tracker: <b>running</b></div>
+        <div class="pipe__line" data-line>hands: <b>1</b></div>
+        <div class="pipe__line" data-line>landmarks: <b>21</b> · fps: <b>30</b></div>
+        <div class="pipe__line" data-line>thumb → index: <b data-measure-value>0.62</b> palm</div>
+        <div class="pipe__line" data-line>middle, ring, pinky: <b>open</b></div>
+        <div class="pipe__verdict" data-verdict>Index pinch</div>
+      </div>
+      <div class="pipe__pane" data-pane aria-hidden="true">
+        <div class="pipe__win" data-pipe-win>
+          <div class="pipe__win-bar"></div>
+          <i style="width: 60%"></i><i style="width: 85%"></i><i style="width: 40%"></i>
+          <div class="pipe__frame" data-pipe-frame></div>
+          <div class="pipe__pulse" data-pipe-pulse></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

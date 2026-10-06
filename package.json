@@ -1,0 +1,23 @@
+{
+  "name": "holotouch-website",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.28.4",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "fonts": "sh tools/subset-fonts.sh"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^7.3.6",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  }
+}

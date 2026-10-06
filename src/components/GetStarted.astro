@@ -1,0 +1,34 @@
+<section class="band" id="start">
+  <div class="wrap start">
+    <div class="start__text" data-reveal>
+      <h2>Get started</h2>
+      <p class="lead">HoloTouch runs on a laptop CPU with an ordinary webcam.</p>
+      <h3>What it needs</h3>
+      <ul class="needs">
+        <li>Linux with an X11 session, xfwm4 and a running compositor</li>
+        <li>A webcam</li>
+        <li>Python 3.12</li>
+      </ul>
+      <p class="fine">A few tools are optional, each for one feature: smooth scrolling, volume, dictation and the rest. <code>holotouch doctor</code> reports which are present.</p>
+    </div>
+    <div class="start__side" data-reveal>
+      <div class="term">
+        <div class="term__bar">
+          <span>Terminal</span>
+          <button type="button" class="term__copy" id="copy">Copy</button>
+        </div>
+        <pre id="commands"><span class="term__p">$</span> git clone https://github.com/justanotherinternetguy/HoloTouch
+<span class="term__p">$</span> cd HoloTouch
+<span class="term__p">$</span> uv sync
+<span class="term__p">$</span> uv run holotouch doctor
+<span class="term__p">$</span> uv run holotouch panel</pre>
+      </div>
+      <dl class="commands">
+        <div><dt><code>holotouch panel</code></dt><dd>Open the control panel: start and stop, the gesture guide, and practice.</dd></div>
+        <div><dt><code>holotouch run</code></dt><dd>Start tracking and the overlay.</dd></div>
+        <div><dt><code>holotouch run --dry-run</code></dt><dd>Practice on two stand-in windows. Your real ones are left alone.</dd></div>
+        <div><dt><code>holotouch doctor</code></dt><dd>Check the machine, and measure the tracking rate.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
