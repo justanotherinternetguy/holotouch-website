@@ -83,7 +83,7 @@ export function initPipeline(root: HTMLElement | null) {
 
         trigger = ScrollTrigger.create({
             trigger: root, start: 'top top', end: 'bottom bottom',
-            scrub: calm ? true : 0.6, animation: tl, invalidateOnRefresh: true,
+            scrub: calm ? true : 0.9, animation: tl, invalidateOnRefresh: true,
             onRefreshInit: () => { root!.style.height = Math.round((total + 100) * unit()) + 'px'; }
         });
         root!.style.height = Math.round((total + 100) * unit()) + 'px';

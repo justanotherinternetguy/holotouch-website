@@ -79,7 +79,7 @@ export function initStory(root: HTMLElement) {
 
         trigger = ScrollTrigger.create({
             trigger: root, start: 'top top', end: 'bottom bottom',
-            scrub: calm ? true : 0.6, animation: tl, invalidateOnRefresh: true,
+            scrub: calm ? true : 0.9, animation: tl, invalidateOnRefresh: true,
             onRefreshInit: measure
         });
         measure();

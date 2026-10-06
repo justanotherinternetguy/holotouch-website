@@ -19,8 +19,8 @@ export interface Pace {
     enterHold: number;
     exitHold: number;
 }
-export const WIDE: Pace = { msPerVh: 80, heroVh: 90, enterHold: 20, exitHold: 10 };
-export const NARROW: Pace = { msPerVh: 120, heroVh: 60, enterHold: 12, exitHold: 6 };
+export const WIDE: Pace = { msPerVh: 55, heroVh: 90, enterHold: 20, exitHold: 10 };
+export const NARROW: Pace = { msPerVh: 85, heroVh: 60, enterHold: 12, exitHold: 6 };
 
 export interface Span {
     chapter: Chapter;
